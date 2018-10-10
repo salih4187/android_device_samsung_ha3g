@@ -51,6 +51,9 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/android.hardware.sensors@1.0-service.exynos5420=22 \
     /system/vendor/bin/hw/android.hardware.audio@2.0-service=22
 
+# Netd
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
