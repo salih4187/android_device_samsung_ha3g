@@ -1,7 +1,7 @@
 # RIL
-bin/cbd
-lib/libaudio-ril.so
-lib/libsec-ril.so
+vendor/bin/cbd
+vendor/lib/libaudio-ril.so
+vendor/lib/libsec-ril.so
 
 # WiFi - Firmware
 etc/wifi/bcmdhd_apsta.bin
@@ -17,26 +17,26 @@ etc/wifi/nvram_net.txt_semco3rd
 etc/wifi/nvram_net.txt_wisol
 
 # GPS
-bin/gpsd
-lib/hw/gps.universal5420.so
-lib/libwrappergps.so
+vendor/bin/gpsd
+vendor/lib/hw/gps.universal5420.so
+vendor/lib/libwrappergps.so
 
 # Prebuilt Audio and Samsung sound effects. Because of the Yamaha chip
-lib/hw/audio_policy.universal5420.so
-lib/hw/audio.primary.universal5420.so:lib/hw/audio.primary.vendor.universal5420.so
-lib/libymc_codecctrl.so
-lib/libymc_config.so
-lib/libsamsungSoundbooster_ext.so
-lib/lib_Samsung_Resampler.so
-lib/lib_soundaliveresampler.so
-lib/libsamsungRecord.so
-lib/libsamsungRecord_ns.so
-lib/libsamsungRecord_zoom.so
-lib/lib_SoundAlive_SRC192_ver205.so
-lib/lib_SamsungRec_V04004.so
-lib/lib_DNSe_NRSS_ver226.so
-lib/lib_Samsung_AudioZoom_v102.so
-lib/lib_SoundBooster_ver402.so
+vendor/lib/hw/audio_policy.universal5420.so
+vendor/lib/hw/audio.primary.universal5420.so:lib/hw/audio.primary.vendor.universal5420.so
+vendor/lib/libymc_codecctrl.so
+vendor/lib/libymc_config.so
+vendor/lib/libsamsungSoundbooster_ext.so
+vendor/lib/lib_Samsung_Resampler.so
+vendor/lib/lib_soundaliveresampler.so
+vendor/lib/libsamsungRecord.so
+vendor/lib/libsamsungRecord_ns.so
+vendor/lib/libsamsungRecord_zoom.so
+vendor/lib/lib_SoundAlive_SRC192_ver205.so
+vendor/lib/lib_SamsungRec_V04004.so
+vendor/lib/lib_DNSe_NRSS_ver226.so
+vendor/lib/lib_Samsung_AudioZoom_v102.so
+vendor/lib/lib_SoundBooster_ver402.so
 usr/share/alsa/alsa.conf
 
 # Yamaha data files
@@ -186,12 +186,12 @@ vendor/firmware/setfile_6b2.bin
 vendor/firmware/setfile_imx135.bin
 
 # Sensors
-bin/sensorhubservice
-lib/libsensorhub.so
-lib/libsensorhubservice.so
-lib/hw/sensorhubs.universal5420.so
-lib/hw/sensors.universal5420.so
-lib/libsensirion_h_3.so
+vendor/bin/sensorhubservice
+vendor/lib/libsensorhub.so
+vendor/lib/libsensorhubservice.so
+vendor/lib/hw/sensorhubs.universal5420.so
+vendor/lib/hw/sensors.universal5420.so
+vendor/lib/libsensirion_h_3.so
 
 # NFC Firmware
 vendor/firmware/bcm2079xB4_firmware.ncd
@@ -200,4 +200,4 @@ vendor/firmware/bcm2079xB5_firmware.ncd
 vendor/firmware/bcm2079xB5_pre_firmware.ncd
 
 # Randoms
-lib/libgnustl_shared.so
+vendor/lib/libgnustl_shared.so
