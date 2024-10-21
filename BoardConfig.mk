@@ -33,6 +33,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 # Bootloader
 TARGET_OTA_ASSERT_DEVICE := ha3g
 
+# HIDL
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
+
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
