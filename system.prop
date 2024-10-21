@@ -2,12 +2,9 @@
 # system.prop for ha3g
 #
 
-# UI
-ro.sf.lcd_density=480
-
 # Radio
-rild.libpath=/system/lib/libsec-ril.so
-rild.libargs=-d /dev/ttyS0
+vendor.rild.libpath=/system/lib/libsec-ril.so
+vendor.rild.libargs=-d /dev/ttyS0
 ro.ril.telephony.mqanelements=6
 ro.telephony.default_network=0
 telephony.lteOnCdmaDevice=0
