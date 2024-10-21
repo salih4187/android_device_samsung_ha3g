@@ -16,11 +16,9 @@
 
 LOCAL_PATH := device/samsung/ha3g
 COMMON_PATH := device/samsung/exynos5420-common
-ANDROID_COMPILE_WITH_JACK:=false
 
 # Platform
-BOARD_VENDOR := samsung
-TARGET_SOC := exynos5420
+BOARD_NO_RECOVERY_PATCH := true
 
 # Radio
 BOARD_PROVIDES_LIBRIL := true
@@ -36,7 +34,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 TARGET_OTA_ASSERT_DEVICE := ha3g
 
 # Kernel
-TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
+TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
 # IR Blaster
 IR_HAS_ONE_FREQ_RANGE := true
@@ -52,10 +50,6 @@ BOARD_USES_GSC_VIDEO := true
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# CMHW
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/cmhw
 
 # NFC
 BOARD_HAVE_NFC := true
@@ -79,5 +73,5 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
 
-# Inherit from exynos5420-common
-include device/samsung/exynos5420-common/BoardConfigCommon.mk
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk
