@@ -22,11 +22,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := normal
 
 # Audio
-PRODUCT_PACKAGES += \
-    libtinyxml \
-    audio.primary.universal5420 \
-    libtinyalsa
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/configs/audio/ysound.xml:system/etc/ysound.xml
@@ -62,12 +57,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
 
-# libstlport
-# M removes libstlport, but some of our binary-only prebuilts need it, so we'll
-# add it back
-PRODUCT_PACKAGES += \
-    libstlport
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -98,10 +87,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
 
-# Sensors wrapper
-PRODUCT_PACKAGES += \
-    sensors.universal5420
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
@@ -131,5 +116,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
 
 # Import the common tree changes
-include device/samsung/exynos5420-common/exynos5420.mk
+include device/samsung/universal5420-common/device-common.mk
 
