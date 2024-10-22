@@ -1,5 +1,5 @@
 # Radio daemon for SIM 1
-service ril-daemon /vendor/bin/hw/rild -c 1 -l ${vendor.rild.libpath}
+service vendor.ril-daemon /vendor/bin/hw/rild -c 1 -l ${vendor.rild.libpath}
     class main
     socket rild stream 660 system radio
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
