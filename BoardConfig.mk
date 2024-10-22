@@ -15,7 +15,7 @@
 #
 
 LOCAL_PATH := device/samsung/ha3g
-COMMON_PATH := device/samsung/exynos5420-common
+COMMON_PATH := device/samsung/universal5420-common
 
 # Platform
 BOARD_NO_RECOVERY_PATCH := true
@@ -55,7 +55,7 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 BOARD_USES_GSC_VIDEO := true
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
 
 # NFC
 BOARD_HAVE_NFC := true
