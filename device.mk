@@ -44,7 +44,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    libshim_dmitry_gps
+    libshim_gps
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
