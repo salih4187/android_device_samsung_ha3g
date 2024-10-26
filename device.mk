@@ -42,10 +42,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     macloader
 
-# GPS
-PRODUCT_PACKAGES += \
-    libshim_gpsd
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
     $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
@@ -78,14 +74,24 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     modemloader \
     android.hardware.radio@1.0 \
-    android.hardware.radio.deprecated@1.0 \
-    libshim_atomic
+    android.hardware.radio.deprecated@1.0
+
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full-v29.so \
+    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so
+
+PRODUCT_PACKAGES += android.hardware.radio.config@1.0-service
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.legacy.rc
+
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_gpsd \
+    libcutils_shim
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
