@@ -36,6 +36,9 @@ TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
 # Display
 TARGET_SCREEN_DENSITY := 480
 
+# HIDL
+DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
