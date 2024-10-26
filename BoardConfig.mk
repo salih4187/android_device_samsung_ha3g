@@ -39,11 +39,19 @@ TARGET_SCREEN_DENSITY := 480
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
 
-# Kernel
-TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
 # IR Blaster
 IR_HAS_ONE_FREQ_RANGE := true
+
+# Kernel
+TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
+
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/hw/rild=27
+
+# Network Routing
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # Battery
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
