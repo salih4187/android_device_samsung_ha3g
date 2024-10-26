@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    libshim_gps
+    libshim_gpsd
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
@@ -78,8 +78,7 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     modemloader \
     android.hardware.radio@1.0 \
-    android.hardware.radio.deprecated@1.0 \
-    libsec-ril_shim
+    android.hardware.radio.deprecated@1.0
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
