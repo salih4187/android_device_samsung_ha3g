@@ -1,6 +1,8 @@
 #
 # system.prop for ha3g
 #
+# BPF
+ro.kernel.ebpf.supported=false
 
 # Radio
 vendor.rild.libpath=/vendor/lib/libsec-ril.so
@@ -14,3 +16,6 @@ net.tethering.noprovisioning=true
 
 # Wifi
 wlan.wfd.hdcp=disable
+
+# System
+persist.sys.binary_xml=false
