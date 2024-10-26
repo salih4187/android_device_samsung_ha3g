@@ -27,6 +27,9 @@ BOARD_MODEM_TYPE := xmm6360
 # we need define it (because audio.primary.universal5420.so requires it)
 BOARD_GLOBAL_CFLAGS += -DSEC_PRODUCT_FEATURE_RIL_CALL_DUALMODE_CDMAGSM
 
+# Audio blobs
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
@@ -38,7 +41,6 @@ TARGET_SCREEN_DENSITY := 480
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
-
 
 # IR Blaster
 IR_HAS_ONE_FREQ_RANGE := true
@@ -78,6 +80,11 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 27912056832
 BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
+
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /vendor/bin/gpsd|/vendor/lib/libshim_gps.so \
+    /system/vendor/lib/libsec-ril.so|libsec-ril_shim.so
 
 # Camera: portrait orientation
 BOARD_CAMERA_FRONT_ROTATION := 270
