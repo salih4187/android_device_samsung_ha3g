@@ -78,7 +78,8 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     modemloader \
     android.hardware.radio@1.0 \
-    android.hardware.radio.deprecated@1.0
+    android.hardware.radio.deprecated@1.0 \
+    libshim_atomic
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.carrier=unknown
