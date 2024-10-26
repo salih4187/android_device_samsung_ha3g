@@ -2,9 +2,6 @@
 # system.prop for ha3g
 #
 
-# UI
-ro.sf.lcd_density=480
-
 # Radio
 vendor.rild.libpath=/system/lib/libsec-ril.so
 vendor.rild.libargs=-d /dev/ttyS0
