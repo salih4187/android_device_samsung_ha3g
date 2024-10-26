@@ -34,10 +34,6 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_PACKAGES += \
     libhwjpeg
 
-# Display
-PRODUCT_PACKAGES += \
-    AdvancedDisplay
-
 # Macloader
 PRODUCT_PACKAGES += \
     macloader
