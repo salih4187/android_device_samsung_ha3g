@@ -15,12 +15,10 @@
 #
 
 LOCAL_PATH := device/samsung/ha3g
-COMMON_PATH := device/samsung/exynos5420-common
-ANDROID_COMPILE_WITH_JACK:=false
+COMMON_PATH := device/samsung/universal5420-common
 
 # Platform
-BOARD_VENDOR := samsung
-TARGET_SOC := exynos5420
+BOARD_NO_RECOVERY_PATCH := true
 
 # Radio
 BOARD_PROVIDES_LIBRIL := true
@@ -33,10 +31,13 @@ BOARD_GLOBAL_CFLAGS += -DSEC_PRODUCT_FEATURE_RIL_CALL_DUALMODE_CDMAGSM
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Bootloader
-TARGET_OTA_ASSERT_DEVICE := ha3g
+TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
+
+# Display
+TARGET_SCREEN_DENSITY := 480
 
 # Kernel
-TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
+TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
 # IR Blaster
 IR_HAS_ONE_FREQ_RANGE := true
@@ -53,10 +54,6 @@ BOARD_USES_GSC_VIDEO := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
-# CMHW
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/cmhw
-
 # NFC
 BOARD_HAVE_NFC := true
 BOARD_NFC_HAL_SUFFIX := universal5420
@@ -71,13 +68,9 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# SELinux
-#BOARD_SEPOLICY_DIRS += device/samsung/exynos5420-common/sepolicy
-#BOARD_SEPOLICY_DIRS += device/samsung/ha3g/sepolicy
-
 # Camera: portrait orientation
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
 
-# Inherit from exynos5420-common
-include device/samsung/exynos5420-common/BoardConfigCommon.mk
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk
