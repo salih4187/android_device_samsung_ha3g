@@ -38,9 +38,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AdvancedDisplay
 
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/hw/rild=27
+
 # Macloader
 PRODUCT_PACKAGES += \
     macloader
+
+# Network Routing
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # GPS
 PRODUCT_PACKAGES += \
