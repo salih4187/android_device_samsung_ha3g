@@ -34,6 +34,10 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_PACKAGES += \
     libhwjpeg
 
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze 
+
 # Macloader
 PRODUCT_PACKAGES += \
     macloader
