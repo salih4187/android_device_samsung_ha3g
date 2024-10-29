@@ -28,5 +28,6 @@ LOCAL_C_INCLUDES += \
     system/media/audio_effects/include
 LOCAL_SHARED_LIBRARIES := liblog libcutils libaudioutils libdl libtinyalsa
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
