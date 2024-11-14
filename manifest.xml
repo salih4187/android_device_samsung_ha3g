@@ -1,5 +1,5 @@
-<manifest version="1.0" type="device" target-level="legacy">
-	<hal format="hidl">
+<manifest version="1.0" type="device" target-level="5">
+    <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
