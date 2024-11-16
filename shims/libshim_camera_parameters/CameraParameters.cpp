@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,13 @@
  * limitations under the License.
  */
 
-#ifndef _BDROID_BUILDCFG_H
-#define _BDROID_BUILDCFG_H
+#include "CameraParameters.h"
 
-#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 3"
-
-#define BTM_WBS_INCLUDED TRUE       /* Enable WBS */
-#define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
-
-#define BLE_VND_INCLUDED TRUE
-
-#define BTM_SCO_ENHANCED_SYNC_ENABLED FALSE
-
-#endif
+namespace android {
+const char CameraParameters::BURST_SHOT_OFF[] = "burst-shot";
+const char CameraParameters::BURST_SHOT_ON[] = "burst-shot";
+const char CameraParameters::FOCUS_MODE_MANUAL_POSITION[] = "manual-position";
+const char CameraParameters::KEY_BURST_SHOT[] = "burst-shot";
+const char CameraParameters::KEY_FOCUS_MODE_OBJECT_TRACKING[] = "object-tracking";
+const char CameraParameters::WHITE_BALANCE_MANUAL_CCT[] = "white-balance-manual";
+}; // namespace android

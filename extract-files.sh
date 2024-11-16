@@ -22,6 +22,7 @@ fi
 
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
+sed -i "s/SSLv3_client_method/SSLv23_method\x00\x00\x00\x00\x00\x00/" $BASE/vendor/bin/hw/gpsd
 
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
   echo "Extracting /system/$FILE ..."

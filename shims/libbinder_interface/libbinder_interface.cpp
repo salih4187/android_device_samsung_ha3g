@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The CyanogenMod Project
+ * Copyright (C) 2019 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,16 +14,19 @@
  * limitations under the License.
  */
 
-#ifndef _BDROID_BUILDCFG_H
-#define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 3"
+#include <binder/IInterface.h>
 
-#define BTM_WBS_INCLUDED TRUE       /* Enable WBS */
-#define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
+extern "C" {
 
-#define BLE_VND_INCLUDED TRUE
+void _ZN7android10IInterface8asBinderEv(void *retval, void* self) {
+    android::sp<android::IBinder> *ret = new(retval) android::sp<android::IBinder>;
+    *ret = android::IInterface::asBinder((android::IInterface*)self);
+}
 
-#define BTM_SCO_ENHANCED_SYNC_ENABLED FALSE
+void _ZNK7android10IInterface8asBinderEv(void *retval, void *self) {
+    android::sp<android::IBinder> *ret = new(retval) android::sp<android::IBinder>;
+    *ret = android::IInterface::asBinder((android::IInterface*)self);
+}
 
-#endif
+} // extern "C"

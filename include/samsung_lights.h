@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2024 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  * limitations under the License.
  */
 
-#ifndef SAMSUNG_LIGHTS_H
-#define SAMSUNG_LIGHTS_H
+#pragma once
 
 /*
  * Board specific nodes
@@ -31,5 +30,3 @@
 
 // Uncomment to enable variable button brightness
 #define VAR_BUTTON_BRIGHTNESS 1
-
-#endif  // SAMSUNG_LIGHTS_H

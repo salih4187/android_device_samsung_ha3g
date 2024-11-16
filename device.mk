@@ -17,6 +17,12 @@
 LOCAL_PATH := device/samsung/ha3g
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/hardware/samsung/AdvancedDisplay
+
+# AdvancedDisplay (MDNIE)
+PRODUCT_PACKAGES += \
+    AdvancedDisplay
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -27,9 +33,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/mixer_paths_0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths_0.xml \
     $(LOCAL_PATH)/configs/audio/ysound.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/ysound.xml
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_vendor.conf
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -39,64 +45,59 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     SamsungDoze 
 
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps/gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gps.xml
+
 # Macloader
 PRODUCT_PACKAGES += \
     macloader
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
-
 # Input device
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
-    $(LOCAL_PATH)/configs/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
+    $(LOCAL_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/Synaptics_HID_TouchPad.idc \
+    $(LOCAL_PATH)/configs/idc/sec_e-pen.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/sec_e-pen.idc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
+    $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_touchkey.kl
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-
-# Ramdisk
-PRODUCT_PACKAGES += \
-    init.target.rc \
-    init.baseband.rc
-
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
+    
 # Radio
 PRODUCT_PACKAGES += \
+    modemloader \
+    libprotobuf-cpp-full \
+    libxml2 \
+    rild \
     libril \
     libreference-ril \
-    rild \
-    libxml2 \
-    libprotobuf-cpp-full \
-    modemloader \
     android.hardware.radio@1.0 \
     android.hardware.radio.deprecated@1.0
 
 PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full-v29.so \
-    prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so
-
-PRODUCT_PACKAGES += android.hardware.radio.config@1.0-service
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown
-
-PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.legacy.rc
+    
+# Ramdisk
+PRODUCT_PACKAGES += \
+	init.baseband.rc \
+    init.target.rc
 
 # Shims
 PRODUCT_PACKAGES += \
-    libshim_gpsd \
-    libcutils_shim
+    libshim_dmitry_gps \
+    libcutils_shim \
+    libshim_atomic \
+    libshim_binder
+
+# Properties
+include $(LOCAL_PATH)/system_prop.mk
+
+# Inherit from universal5420-common
+$(call inherit-product, device/samsung/universal5420-common/device-common.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
-
-# Import the common tree changes
-include device/samsung/universal5420-common/device-common.mk
-
+$(call inherit-product, vendor/samsung/ha3g/ha3g-vendor.mk)

@@ -2,7 +2,7 @@
 <ymc>
 <!-- Copyright (c) 2013 Yamaha Corporation  0.2.6  2013.06.25 -->
 <!-- for handover proposal#2 at voice call (CP:I2S, BT:I2S) -->
-    <parameter rootdir="/system/etc/ymc/param" />
+    <parameter rootdir="/vendor/etc/ymc/param" />
 <!-- Group for Incall -->
     <group name="Earpiece_Incall_NB">
         <!-- transmit -->

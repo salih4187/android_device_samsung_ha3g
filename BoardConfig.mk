@@ -14,24 +14,25 @@
 # limitations under the License.
 #
 
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk
+
 LOCAL_PATH := device/samsung/ha3g
 COMMON_PATH := device/samsung/universal5420-common
 
 # Platform
 BOARD_NO_RECOVERY_PATCH := true
 
-# Radio
-BOARD_PROVIDES_LIBRIL := true
-# hardware/samsung/ril
-BOARD_MODEM_TYPE := xmm6360
-# we need define it (because audio.primary.universal5420.so requires it)
-BOARD_GLOBAL_CFLAGS += -DSEC_PRODUCT_FEATURE_RIL_CALL_DUALMODE_CDMAGSM
-
 # Audio blobs
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+BOARD_GLOBAL_CFLAGS += -DSEC_PRODUCT_FEATURE_RIL_CALL_DUALMODE_CDMAGSM
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
 
 # Bootloader
 TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
@@ -40,7 +41,7 @@ TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
 TARGET_SCREEN_DENSITY := 480
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
 
 # IR Blaster
 IR_HAS_ONE_FREQ_RANGE := true
@@ -48,12 +49,12 @@ IR_HAS_ONE_FREQ_RANGE := true
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
-# Legacy BLOB Support
-TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=27
+# Mixer
+BOARD_USE_BGRA_8888 := true
 
-# Network Routing
-TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
+# Modem
+BOARD_PROVIDES_LIBRIL := true
+BOARD_MODEM_TYPE := xmm6360
 
 # Battery
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
@@ -65,7 +66,10 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 BOARD_USES_GSC_VIDEO := true
 
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
+
+# Network Routing
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # NFC
 BOARD_HAVE_NFC := true
@@ -81,14 +85,20 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+# Sensors
+BOARD_NEEDS_MEMORYHEAPION := true
+BOARD_GLOBAL_CFLAGS += -DSAMSUNG_DVFS
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
-    /vendor/bin/gpsd|/vendor/lib/libshim_gpsd.so \
-    /vendor/lib/libsec-ril.so|libcutils_shim.so
+    /vendor/bin/hw/gpsd|/vendor/lib/libshim_dmitry_gps.so \
+    /vendor/lib/libsec-ril.so|libshim_atomic.so \
+    /vendor/lib/libsec-ril.so|libcutils_shim.so \
+    /vendor/lib/libsensorhub.so|libshim_binder.so
 
 # Camera: portrait orientation
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
 
-# Inherit from universal5420-common
-include device/samsung/universal5420-common/BoardConfigCommon.mk
+# inherit from the proprietary version
+include vendor/samsung/ha3g/BoardConfigVendor.mk
