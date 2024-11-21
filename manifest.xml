@@ -1,4 +1,4 @@
-<manifest version="1.0" type="device" target-level="5">
+<manifest version="1.0" type="device" target-level="5" >
     <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
@@ -21,6 +21,7 @@
             <instance>slot1</instance>
         </interface>
     </hal>
+<!--
     <hal format="hidl">
         <name>vendor.lineage.touch</name>
         <transport>hwbinder</transport>
@@ -42,4 +43,5 @@
             <instance>default</instance>
         </interface>
     </hal>
+-->
 </manifest>
