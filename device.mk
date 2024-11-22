@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ PRODUCT_AAPT_CONFIG := normal
 # Audio
 PRODUCT_PACKAGES += \
     libtinyxml \
-    audio.primary.universal5420 \
     libtinyalsa
 
 PRODUCT_COPY_FILES += \
@@ -38,6 +37,10 @@ TARGET_SCREEN_WIDTH := 1080
 # Display
 PRODUCT_PACKAGES += \
     SamsungServiceMode
+
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
 # Macloader
 PRODUCT_PACKAGES += \
@@ -61,12 +64,6 @@ PRODUCT_COPY_FILES += \
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
-
-# libstlport
-# M removes libstlport, but some of our binary-only prebuilts need it, so we'll
-# add it back
-PRODUCT_PACKAGES += \
-    libstlport
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -102,8 +99,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     sensors.universal5420
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+# STLPort
+PRODUCT_PACKAGES += \
+    libstlport
 
 # dalvik heap and hwui config
 PRODUCT_PROPERTY_OVERRIDES += \
