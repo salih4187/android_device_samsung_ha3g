@@ -53,6 +53,10 @@ BOARD_USES_GSC_VIDEO := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Linker
+TARGET_LD_SHIM_LIBS += /system/lib/libsec-ril.so|libsec-ril_shim.so
+TARGET_LD_SHIM_LIBS += /system/bin/gpsd|/system/lib/libdmitry.so
+
 # CMHW
 BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
 BOARD_HARDWARE_CLASS += $(COMMON_PATH)/cmhw
