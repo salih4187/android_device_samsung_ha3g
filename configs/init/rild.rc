@@ -12,3 +12,4 @@ service vendor.ril-daemon /vendor/bin/hw/rild -c 1 -l ${vendor.rild.libpath}
 on property:persist.sys.cpboot=disable
     stop vendor.ril-daemon
     stop cpboot-daemon
+

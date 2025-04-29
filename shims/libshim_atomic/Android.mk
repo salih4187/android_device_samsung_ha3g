@@ -1,5 +1,4 @@
-# Copyright (C) 2013-2016 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright 2010 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+LOCAL_PATH:= $(call my-dir)
 
-$(call inherit-product, device/samsung/ha3g/full_ha3g.mk)
+include $(CLEAR_VARS)
 
-PRODUCT_DEVICE := ha3g
-PRODUCT_NAME := lineage_ha3g
+LOCAL_SRC_FILES := atomic.cpp
+LOCAL_MODULE := libshim_atomic
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_PROPRIETARY_MODULE := true
+
+include $(BUILD_SHARED_LIBRARY)

@@ -14,13 +14,8 @@
  * limitations under the License.
  */
 
-#include "CameraParameters.h"
-
-namespace android {
-const char CameraParameters::BURST_SHOT_OFF[] = "burst-shot";
-const char CameraParameters::BURST_SHOT_ON[] = "burst-shot";
-const char CameraParameters::FOCUS_MODE_MANUAL_POSITION[] = "manual-position";
-const char CameraParameters::KEY_BURST_SHOT[] = "burst-shot";
-const char CameraParameters::KEY_FOCUS_MODE_OBJECT_TRACKING[] = "object-tracking";
-const char CameraParameters::WHITE_BALANCE_MANUAL_CCT[] = "white-balance-manual";
-}; // namespace android
+#include <string>
+#define ANDROID_ATOMIC_INLINE
+extern "C" {
+#include <cutils/atomic.h>
+}

@@ -1,26 +1,59 @@
 import /vendor/etc/init/hw/init.baseband.rc
 
+on post-fs-data
+
+# YAAS(Yamaha Android Audio System) uses.
+    mkdir /data/ymc 0775 system system
+    chmod 0666 /dev/snd/controlC0
+
+# SVC LED
+    chown system system /sys/class/sec/led/led_r
+    chown system system /sys/class/sec/led/led_g
+    chown system system /sys/class/sec/led/led_b
+    chown system system /sys/class/leds/led_r/brightness
+    chown system system /sys/class/leds/led_g/brightness
+    chown system system /sys/class/leds/led_b/brightness
+    chown system system /sys/class/leds/led_r/delay_on
+    chown system system /sys/class/leds/led_g/delay_on
+    chown system system /sys/class/leds/led_b/delay_on
+    chown system system /sys/class/leds/led_r/delay_off
+    chown system system /sys/class/leds/led_g/delay_off
+    chown system system /sys/class/leds/led_b/delay_off
+    chown system system /sys/class/leds/led_r/blink
+    chown system system /sys/class/leds/led_g/blink
+    chown system system /sys/class/leds/led_b/blink
+    chown system system /sys/class/sec/led/led_pattern
+    chown system system /sys/class/sec/led/led_blink
+    chown system system /sys/class/sec/led/led_br_lev
+    chown system system /sys/class/sec/led/led_lowpower
+
+# Sensorhub service
+service sensorhubservice /vendor/bin/sensorhubservice
+    class main
+    user system
+    group input
+
 on boot
 
-	# Permissions for gpio_keys
+# Permissions for gpio_keys
     chown system system /sys/class/input/input13/enabled
     chmod 0660 /sys/class/input/input13/enabled
 
-	# Headphones (Headset)
-    chown system system /sys/class/input/input12/enabled
-    chmod 0660 /sys/class/input/input12/enabled
+# Permissions for HeadSet
     chown system system /sys/class/input/input11/enabled
     chmod 0660 /sys/class/input/input11/enabled
+    chown system system /sys/class/input/input12/enabled
+    chmod 0660 /sys/class/input/input12/enabled
 
-	# Permissions for Touchkey
-    chown system system /sys/class/input/input14/enabled
+# Permissions for Touchkey
+    chown system radio /sys/class/input/input14/enabled
     chmod 0660 /sys/class/input/input14/enabled
+    
+# Permissions for TouchScreen
+	chown system system /sys/class/input/input1/enabled
+    chmod 0660 /sys/class/input/input1/enabled
 
-    # Micro-USB IC (max77803-muic)
-    chown system system /sys/class/input/input0/enabled
-    chmod 0660 /sys/class/input/input0/enabled
-
-	# Permissions for sensors
+# Permissions for sensors
     chown system system /sys/class/input/input2/enabled
     chmod 0660 /sys/class/input/input2/enabled
     chown system system /sys/class/input/input3/enabled
@@ -40,20 +73,20 @@ on boot
     chown system system /sys/class/input/input10/enabled
     chmod 0660 /sys/class/input/input10/enabled
 
-	# Accelerometer_sensor
+# Accelerometer_sensor
     chown system radio /sys/class/sensors/accelerometer_sensor/selftest
 
-    # Temphumidity_sensor
+# Temphumidity_sensor
     chown system radio /sys/class/sensors/temphumidity_sensor/mcu_batt_adc
     chown system radio /sys/class/sensors/temphumidity_sensor/mcu_chg_adc
     chown system radio /sys/class/sensors/temphumidity_sensor/batt_temperature
     chown system radio /sys/class/sensors/temphumidity_sensor/chg_temperature
 
-	# SHTC1 BULK
+# SHTC1 BULK
     chmod 0600 /dev/shtc1_sensor
     chown system system /dev/shtc1_sensor
 
-	# SensorHub
+# SensorHub
     chown system radio /sys/class/sensors/ssp_sensor/enable
     chown system radio /sys/class/sensors/ssp_sensor/mcu_rev
     chown system radio /sys/class/sensors/ssp_sensor/mcu_name
@@ -62,7 +95,7 @@ on boot
     chown system radio /sys/class/sensors/ssp_sensor/mcu_update
     chown system radio /sys/class/sensors/ssp_sensor/mcu_sleep_test
 
-	# Sensorhub IIO
+# Sensorhub IIO
     chown system radio /sys/class/sensors/ssp_sensor/accel_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/rot_poll_delay
     chown system radio /sys/class/sensors/ssp_sensor/game_rot_poll_delay
@@ -76,7 +109,7 @@ on boot
     chmod 0600 /dev/batch_io
     chown system system /dev/batch_io
 
-    # Permissions for EPEN
+# Permissions for EPEN
     chown system radio /sys/class/sec/sec_epen/epen_firm_update
     chown system radio /sys/class/sec/sec_epen/epen_rotation
     chown system radio /sys/class/sec/sec_epen/epen_hand
@@ -86,57 +119,18 @@ on boot
     chown system radio /sys/class/sec/sec_epen/epen_checksum_result
     chown system radio /sys/class/sec/sec_epen/epen_saving_mode
     chown system radio /sys/class/sec/sec_epen/boost_level
-	chown system system /sys/class/input/input14/enabled
-    chmod 0660 /sys/class/input/input14/enabled
-	
-	# Epen power saving mode
-    write /sys/devices/virtual/sec/sec_epen/epen_saving_mode 1 
 
-on post-fs-data
+	chown system system /sys/class/input/input15/enabled
+    chmod 0660 /sys/class/input/input15/enabled
 
-    # YAAS(Yamaha Android Audio System) uses.
-    
-    mkdir /data/ymc 0775 system system
-    chmod 0666 /dev/snd/controlC0
-
-    # SVC LED
-  
-    chown system system /sys/class/sec/led/led_r
-    chown system system /sys/class/sec/led/led_g
-    chown system system /sys/class/sec/led/led_b
-
-    chown system system /sys/class/leds/led_r/brightness
-    chown system system /sys/class/leds/led_g/brightness
-    chown system system /sys/class/leds/led_b/brightness
-    chown system system /sys/class/leds/led_r/delay_on
-    chown system system /sys/class/leds/led_g/delay_on
-    chown system system /sys/class/leds/led_b/delay_on
-    chown system system /sys/class/leds/led_r/delay_off
-    chown system system /sys/class/leds/led_g/delay_off
-    chown system system /sys/class/leds/led_b/delay_off
-    chown system system /sys/class/leds/led_r/blink
-    chown system system /sys/class/leds/led_g/blink
-    chown system system /sys/class/leds/led_b/blink
-
-    chown system system /sys/class/sec/led/led_pattern
-    chown system system /sys/class/sec/led/led_blink
-    chown system system /sys/class/sec/led/led_br_lev
-    chown system system /sys/class/sec/led/led_lowpower  
-     
-    # Sensorhub service
-	service sensorhubservice /vendor/bin/sensorhubservice
-    class main
-    user system
-    group input 
-     
 on fs
-   
-    # Broadcom NFC
+
+# Broadcom NFC
     chmod 0600 /dev/bcm2079x
-    chown nfc nfc /dev/bcm2079x 
+    chown nfc nfc /dev/bcm2079x
     mkdir /data/bcmnfc
     mkdir /data/bcmnfc/param
     chmod 0700 /data/bcmnfc
     chmod 0700 /data/bcmnfc/param
     chown nfc nfc /data/bcmnfc
-    chown nfc nfc /data/bcmnfc/param
+    chown nfc nfc /data/bcmnfc/param/param
