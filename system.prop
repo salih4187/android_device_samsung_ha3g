@@ -15,9 +15,6 @@ dalvik.vm.heaptargetutilization=0.75
 dalvik.vm.heapminfree=2m
 dalvik.vm.heapmaxfree=8m
 
-# Graphics
-ro.sf.lcd_density=480
-
 # Radio
 vendor.rild.libpath=/system/vendor/lib/libsec-ril.so
 vendor.rild.libargs=-d /dev/ttyS0

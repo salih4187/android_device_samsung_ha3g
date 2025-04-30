@@ -13,10 +13,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from ha3g device
+$(call inherit-product, device/samsung/ha3g/device.mk)
+
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-$(call inherit-product, device/samsung/ha3g/full_ha3g.mk)
-
 PRODUCT_DEVICE := ha3g
 PRODUCT_NAME := lineage_ha3g
+PRODUCT_BRAND := samsung
+PRODUCT_MODEL := SM-N900
+PRODUCT_MANUFACTURER := samsung
+
+PRODUCT_GMS_CLIENTID_BASE := android-samsung
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=ha3gxx \
+    PRIVATE_BUILD_DESC="ha3gxx-user 5.0 LRX21V N900XXSEBRH3 release-keys"
+
+BUILD_FINGERPRINT := samsung/ha3gxx/ha3g:5.0/LRX21V/N900XXSEBRH3:user/release-keys

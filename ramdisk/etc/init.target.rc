@@ -119,6 +119,7 @@ on boot
     chown system radio /sys/class/sec/sec_epen/epen_checksum_result
     chown system radio /sys/class/sec/sec_epen/epen_saving_mode
     chown system radio /sys/class/sec/sec_epen/boost_level
+    chown system radio /sys/class/sec/sec_epen/epen_gestures
 
 	chown system system /sys/class/input/input15/enabled
     chmod 0660 /sys/class/input/input15/enabled

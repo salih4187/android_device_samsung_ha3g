@@ -69,9 +69,8 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/keylayout/sec_e-pen.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_e-pen.kl \
     $(DEVICE_PATH)/configs/keylayout/sec_touchkey.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_touchkey.kl
 
-# Macloader
-PRODUCT_PACKAGES += \
-    macloader
+# NFC
+$(call inherit-product, device/samsung/ha3g/nfc/bcm2079x/product.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -108,8 +107,9 @@ PRODUCT_PACKAGES += \
     libshim_binder \
     libshim_dmitry_gps
 
-# NFC
-#$(call inherit-product, device/samsung/ha3g/nfc/bcm2079x/product.mk)
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2016-01-01
 
 # Inherit from universal5420-common
 $(call inherit-product, device/samsung/universal5420-common/device-common.mk)

@@ -31,10 +31,13 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
 
 # Camera
-BOARD_BACK_CAMERA_ROTATION := 90
-BOARD_FRONT_CAMERA_ROTATION := 270
-BOARD_BACK_CAMERA_SENSOR := SENSOR_NAME_IMX135
-BOARD_FRONT_CAMERA_SENSOR := SENSOR_NAME_S5K6B2
+#BOARD_BACK_CAMERA_ROTATION := 90
+#BOARD_FRONT_CAMERA_ROTATION := 270
+#BOARD_BACK_CAMERA_SENSOR := SENSOR_NAME_IMX135
+#BOARD_FRONT_CAMERA_SENSOR := SENSOR_NAME_S5K6B2
+
+# Display
+TARGET_SCREEN_DENSITY := 480
 
 # HDMI
 BOARD_USES_GSC_VIDEO := true
@@ -88,7 +91,7 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
 # Shims
 TARGET_LD_SHIM_LIBS += \
-    /vendor/bin/hw/gpsd|/system/vendor/lib/libshim_dmitry_gps.so \
+    /vendor/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so \
     /vendor/lib/libsec-ril.so|libshim_atomic.so \
     /vendor/lib/libsec-ril.so|libcutils_shim.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
