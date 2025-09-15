@@ -56,7 +56,9 @@ TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
-    /system/vendor/bin/hw/rild=27
+    /system/vendor/bin/hw/rild=27 \
+    /system/vendor/lib/libsensirion_h_3.so=22 \
+    /system/vendor/lib/lib_Samsung_AudioZoom_v102.so=22
 
 # Modem
 BOARD_MODEM_TYPE := xmm6360
