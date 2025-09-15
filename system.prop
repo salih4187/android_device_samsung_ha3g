@@ -1,19 +1,28 @@
-#
-# system.prop for ha3g
-#
+# ADB
+ro.debuggable=1
+ro.debug_level=0x4948
+ 
+# Audio
+ro.config.vc_call_vol_steps=7
 
-# UI
-ro.sf.lcd_density=480
+# Dalvik heap
+dalvik.vm.image-dex2oat-filter=speed
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=128m
+dalvik.vm.heapsize=512m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=2m
+dalvik.vm.heapmaxfree=8m
 
 # Radio
-rild.libpath=/system/lib/libsec-ril.so
-rild.libargs=-d /dev/ttyS0
-ro.telephony.ril_class=SamsungExynosRIL
-ro.ril.telephony.mqanelements=6
+vendor.rild.libpath=/system/vendor/lib/libsec-ril.so
+vendor.rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=0
 telephony.lteOnCdmaDevice=0
-ro.ril.samsung_nextgen_modem=false
-ro.ril.needs_videocall_field=false
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+ro.ril.telephony.mqanelements=6
 
 # Wifi
 wlan.wfd.hdcp=disable

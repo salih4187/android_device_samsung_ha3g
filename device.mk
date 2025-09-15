@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 The CyanogenMod Project
+# Copyright (C) 2024 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,106 +14,105 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/ha3g
+DEVICE_PATH := device/samsung/ha3g
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
-
-# Audio
-PRODUCT_PACKAGES += \
-    libtinyxml \
-    audio.primary.universal5420 \
-    libtinyalsa
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/configs/audio/ysound.xml:system/etc/ysound.xml
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay-lineage
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Display
+# AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
-    SamsungServiceMode
+    AdvancedDisplay
 
-# Macloader
+# Audio
 PRODUCT_PACKAGES += \
-    macloader
+    libtinyxml \
+    libtinyalsa
 
-# GPS
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/mixer_paths.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/mixer_paths.xml \
+    $(DEVICE_PATH)/configs/audio/ysound.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/ysound.xml
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/bluetooth/bt_vendor.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/bluetooth/bt_vendor.conf
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Doze
 PRODUCT_PACKAGES += \
-    libdmitry
+	SamsungDoze
+
+# FlipFlap
+PRODUCT_PACKAGES += \
+    FlipFlap
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
+    $(DEVICE_PATH)/configs/gps/gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/gps.xml
 
 # Input device
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
-    $(LOCAL_PATH)/configs/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc
+    $(DEVICE_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/Synaptics_HID_TouchPad.idc \
+    $(DEVICE_PATH)/configs/idc/sec_e-pen.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/sec_e-pen.idc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl
+    $(DEVICE_PATH)/configs/keylayout/Button_Jack.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/Button_Jack.kl \
+    $(DEVICE_PATH)/configs/keylayout/gpio_keys.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/gpio_keys.kl \
+    $(DEVICE_PATH)/configs/keylayout/sec_e-pen.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_e-pen.kl \
+    $(DEVICE_PATH)/configs/keylayout/sec_touchkey.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sec_touchkey.kl
 
 # NFC
-PRODUCT_PACKAGES += \
-    nfc_nci.bcm2079x.universal5420 \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras
-
-# NFCEE access control + configuration
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-brcm-20791b04.conf:system/etc/libnfc-brcm-20791b04.conf \
-    $(LOCAL_PATH)/configs/nfc/libnfc-brcm-20791b05.conf:system/etc/libnfc-brcm-20791b05.conf
+$(call inherit-product, device/samsung/ha3g/nfc/bcm2079x/product.mk)
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-
-# Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.universal5420 \
-    init.target.rc \
-    init.baseband.rc \
-    ueventd.universal5420.rc
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
 
 # Radio
 PRODUCT_PACKAGES += \
-    libril \
-    librilutils \
-    rild \
-    libxml2 \
+    modemloader \
     libprotobuf-cpp-full \
-    modemloader
+    libxml2 \
+    rild \
+    libril \
+    libreference-ril \
+    android.hardware.radio@1.0 \
+    android.hardware.radio.deprecated@1.0
 
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/telephony/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml \
+    $(DEVICE_PATH)/configs/telephony/spn-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/spn-conf.xml
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    init.baseband.rc \
+    init.target.rc
+
+# Shims
+PRODUCT_PACKAGES += \
+    libcutils_shim \
+    libshim_atomic \
+    libshim_binder \
+    libshim_dmitry_gps
+
+# Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown
+    ro.lineage.build.vendor_security_patch=2016-01-01
 
-# call dalvik heap and hwui config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
+# Inherit from universal5420-common
+$(call inherit-product, device/samsung/universal5420-common/device-common.mk)
 
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
-
-# Import the common tree changes
-include device/samsung/exynos5420-common/exynos5420.mk
-
+$(call inherit-product, vendor/samsung/ha3g/ha3g-vendor.mk)

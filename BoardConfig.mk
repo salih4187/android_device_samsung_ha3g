@@ -14,53 +14,67 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := device/samsung/ha3g
-COMMON_PATH := device/samsung/exynos5420-common
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk
 
-# Platform
-BOARD_VENDOR := samsung
-TARGET_SOC := exynos5420
-
-# Radio
-BOARD_PROVIDES_LIBRIL := true
-# hardware/samsung/ril
-BOARD_MODEM_TYPE := xmm6360
-# we need define it (because audio.primary.universal5420.so requires it)
-BOARD_GLOBAL_CFLAGS += -DSEC_PRODUCT_FEATURE_RIL_CALL_DUALMODE_CDMAGSM
-# RIL.java overwrite
-BOARD_RIL_CLASS := ../../../device/samsung/ha3g/ril
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-
-# Bootloader
-TARGET_OTA_ASSERT_DEVICE := ha3g
-
-# Kernel
-TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
-
-# IR Blaster
-IR_HAS_ONE_FREQ_RANGE := true
+DEVICE_PATH := device/samsung/ha3g
 
 # Battery
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
 GREEN_LED_PATH := "/sys/class/leds/led_g/brightness"
 BLUE_LED_PATH := "/sys/class/leds/led_b/brightness"
-BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
+
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+
+# Bootloader
+TARGET_OTA_ASSERT_DEVICE := ha3g,ha3gxx
+
+# Camera
+#BOARD_BACK_CAMERA_ROTATION := 90
+#BOARD_FRONT_CAMERA_ROTATION := 270
+#BOARD_BACK_CAMERA_SENSOR := SENSOR_NAME_IMX135
+#BOARD_FRONT_CAMERA_SENSOR := SENSOR_NAME_S5K6B2
+
+# Display
+TARGET_SCREEN_DENSITY := 480
 
 # HDMI
 BOARD_USES_GSC_VIDEO := true
 
-# Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+# HIDL
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
-# CMHW
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/cmhw
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/cmhw
+# Include path
+TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
+
+# IR Blaster
+IR_HAS_ONE_FREQ_RANGE := true
+
+# Kernel
+TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
+
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/hw/rild=27 \
+    /system/vendor/lib/libsensirion_h_3.so=22 \
+    /system/vendor/lib/lib_Samsung_AudioZoom_v102.so=22
+
+# Modem
+BOARD_MODEM_TYPE := xmm6360
+BOARD_PROVIDES_LIBRIL := true
+
+# NFC
+include $(DEVICE_PATH)/nfc/bcm2079x/board.mk
+
+# Properties
+TARGET_SYSTEM_PROP += device/samsung/ha3g/system.prop
+
+# Network Routing
+TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # NFC
 BOARD_HAVE_NFC := true
-BOARD_NFC_HAL_SUFFIX := universal5420
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
@@ -72,13 +86,15 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-# SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/exynos5420-common/sepolicy
-BOARD_SEPOLICY_DIRS += device/samsung/ha3g/sepolicy
+# Sensors
+TARGET_NO_SENSOR_PERMISSION_CHECK := true
 
-# Camera: portrait orientation
-BOARD_CAMERA_FRONT_ROTATION := 270
-BOARD_CAMERA_BACK_ROTATION := 90
-
-# Inherit from exynos5420-common
-include device/samsung/exynos5420-common/BoardConfigCommon.mk
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /vendor/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so \
+    /vendor/lib/libsec-ril.so|libshim_atomic.so \
+    /vendor/lib/libsec-ril.so|libcutils_shim.so \
+    /vendor/lib/libsensorhub.so|libshim_binder.so
+	
+# inherit from the proprietary version
+include vendor/samsung/ha3g/BoardConfigVendor.mk
