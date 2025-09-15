@@ -16,8 +16,8 @@ dalvik.vm.heapminfree=2m
 dalvik.vm.heapmaxfree=8m
 
 # Radio
-vendor.rild.libpath=/system/vendor/lib/libsec-ril.so
-vendor.rild.libargs=-d /dev/ttyS0
+rild.libpath=/system/vendor/lib/libsec-ril.so
+rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=0
 telephony.lteOnCdmaDevice=0
 ro.ril.hsxpa=1
