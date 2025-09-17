@@ -1,5 +1,5 @@
 on init
-	mkdir /efs 0771 radio system
+    mkdir /efs 0771 radio system
 
     symlink /dev/block/mmcblk0p13 /dev/mbin0
     restorecon /dev/mbin0
@@ -27,4 +27,4 @@ service cpboot-daemon /vendor/bin/cbd -d -txmm626x -bh -mh -p13
     
 on property:ro.modemloader.done=1
     start cpboot-daemon
-    start vendor.ril-daemon
+    start ril-daemon
