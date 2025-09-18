@@ -19,6 +19,8 @@ DEVICE_PATH := device/samsung/ha3g
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay
 DEVICE_PACKAGE_OVERLAYS += $(DEVICE_PATH)/overlay-lineage
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    device/samsung/ha3g/overlay/hardware/samsung/AdvancedDisplay
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
