@@ -67,9 +67,6 @@ BOARD_PROVIDES_LIBRIL := true
 # NFC
 include $(DEVICE_PATH)/nfc/bcm2079x/board.mk
 
-# Properties
-TARGET_SYSTEM_PROP += device/samsung/ha3g/system.prop
-
 # Network Routing
 TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
@@ -95,6 +92,6 @@ TARGET_LD_SHIM_LIBS += \
     /vendor/lib/libsec-ril.so|libshim_atomic.so \
     /vendor/lib/libsec-ril.so|libcutils_shim.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
-	
+
 # inherit from the proprietary version
 include vendor/samsung/ha3g/BoardConfigVendor.mk

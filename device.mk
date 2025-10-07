@@ -113,6 +113,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2016-01-01
 
+# Properties
+-include $(DEVICE_PATH)/system_prop.mk
+
 # Inherit from universal5420-common
 $(call inherit-product, device/samsung/universal5420-common/device-common.mk)
 
