@@ -109,6 +109,9 @@ PRODUCT_PACKAGES += \
     libshim_binder \
     libshim_dmitry_gps
 
+# Shipping api level
+PRODUCT_SHIPPING_API_LEVEL := 18
+
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lineage.build.vendor_security_patch=2016-01-01

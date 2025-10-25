@@ -93,8 +93,5 @@ TARGET_LD_SHIM_LIBS += \
     /vendor/lib/libsec-ril.so|libcutils_shim.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
 
-# Shipping api level
-PRODUCT_SHIPPING_API_LEVEL := 18
-
 # inherit from the proprietary version
 include vendor/samsung/ha3g/BoardConfigVendor.mk
