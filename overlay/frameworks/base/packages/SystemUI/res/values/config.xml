@@ -34,10 +34,5 @@
 
     <!-- Doze: does this device support STATE_DOZE_SUSPEND?  -->
     <bool name="doze_suspend_display_state_supported">false</bool>
-    
-    <!-- The default tiles to display in QuickSettings -->
-    <string name="quick_settings_tiles_default" translatable="false">
-        cell,wifi,bt,location,airplane,hotspot,usb_tether,dnd,flashlight,rotation,battery,vpn
-    </string>
 
 </resources>
