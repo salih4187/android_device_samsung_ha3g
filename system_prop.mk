@@ -29,8 +29,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/vendor/lib/libsec-ril.so \
-    rild.libargs=-d /dev/ttyS0 \
+    vendor.rild.libpath=/system/vendor/lib/libsec-ril.so \
+    vendor.rild.libargs=-d /dev/ttyS0 \
     ro.telephony.default_network=0 \
     telephony.lteOnCdmaDevice=0 \
     ro.ril.hsxpa=1 \
