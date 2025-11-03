@@ -25,7 +25,9 @@ LOCAL_SRC_FILES := wrapper.c
 LOCAL_C_INCLUDES += \
     external/tinyalsa/include \
     system/media/audio_utils/include \
-    system/media/audio_effects/include
+    system/media/audio_effects/include \
+    hardware/libhardware/include
+
 LOCAL_SHARED_LIBRARIES := liblog libcutils libaudioutils libdl libtinyalsa
 LOCAL_MODULE_TAGS := optional
 LOCAL_VENDOR_MODULE := true
