@@ -19,8 +19,7 @@ $(call inherit-product, device/samsung/ha3g/nfc/product.mk)
 
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl-bcm \
-    android.hardware.nfc@1.0-service \
-    nfc_nci.bcm2079x.default
+    android.hardware.nfc@1.0-service
 
 PRODUCT_COPY_FILES += \
     device/samsung/ha3g/nfc/bcm2079x/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci.conf \
