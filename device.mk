@@ -104,9 +104,9 @@ PRODUCT_PACKAGES += \
 
 # Shims
 PRODUCT_PACKAGES += \
+    libcutils_shim \
     libshim_atomic \
     libshim_binder \
-    libshim_cutils \
     libshim_dmitry_gps
 
 # Shipping api level

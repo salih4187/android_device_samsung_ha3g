@@ -90,7 +90,7 @@ TARGET_NO_SENSOR_PERMISSION_CHECK := true
 TARGET_LD_SHIM_LIBS += \
     /vendor/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so \
     /vendor/lib/libsec-ril.so|libshim_atomic.so \
-    /vendor/lib/libsec-ril.so|libshim_cutils.so \
+    /vendor/lib/libsec-ril.so|libcutils_shim.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
 
 # inherit from the proprietary version
