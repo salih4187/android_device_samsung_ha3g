@@ -81,7 +81,6 @@ PRODUCT_COPY_FILES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    modemloader \
     libprotobuf-cpp-full \
     libxml2 \
     rild \
