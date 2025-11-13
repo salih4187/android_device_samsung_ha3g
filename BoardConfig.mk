@@ -58,7 +58,7 @@ TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/rild=27 \
     /system/vendor/bin/hw/android.hardware.sensors@1.0-service.exynos5420=22 \
-    /system/vendor/bin/hw/android.hardware.audio.service=22
+    /system/vendor/bin/hw/android.hardware.audio.service.exynos5=22
 
 # Modem
 BOARD_MODEM_TYPE := xmm6360
