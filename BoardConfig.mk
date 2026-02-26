@@ -60,6 +60,10 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/hw/android.hardware.sensors@1.0-service.exynos5420=22 \
     /system/vendor/bin/hw/android.hardware.audio.service=22
 
+# Modem
+BOARD_MODEM_TYPE := xmm6360
+BOARD_PROVIDES_LIBRIL := true
+
 # NFC
 include $(DEVICE_PATH)/nfc/bcm2079x/board.mk
 
