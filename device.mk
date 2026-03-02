@@ -24,7 +24,6 @@ PRODUCT_AAPT_CONFIG := normal
 # Audio
 PRODUCT_PACKAGES += \
     libtinyxml \
-    audio.primary.universal5420 \
     libtinyalsa
 
 PRODUCT_COPY_FILES += \
@@ -35,14 +34,6 @@ PRODUCT_COPY_FILES += \
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-# Display
-PRODUCT_PACKAGES += \
-    SamsungServiceMode
-
-# Macloader
-PRODUCT_PACKAGES += \
-    macloader
-
 # GPS
 PRODUCT_PACKAGES += \
     libdmitry
@@ -50,7 +41,6 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
 # Input device
@@ -89,10 +79,8 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    fstab.universal5420 \
     init.target.rc \
-    init.baseband.rc \
-    ueventd.universal5420.rc
+    init.baseband.rc
 
 # Radio
 PRODUCT_PACKAGES += \
@@ -102,14 +90,6 @@ PRODUCT_PACKAGES += \
     libxml2 \
     libprotobuf-cpp-full \
     modemloader
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.carrier=unknown
-
-# call dalvik heap and hwui config
-$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
