@@ -64,6 +64,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /vendor/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so \
+    /vendor/lib/libsec-ril.so|libshim_atomic.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
 
 # Camera: portrait orientation
