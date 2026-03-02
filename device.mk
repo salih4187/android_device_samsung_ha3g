@@ -71,15 +71,6 @@ PRODUCT_PACKAGES += \
     init.target.rc \
     init.baseband.rc
 
-# Radio
-PRODUCT_PACKAGES += \
-    libril \
-    librilutils \
-    rild \
-    libxml2 \
-    libprotobuf-cpp-full \
-    modemloader
-
 # Shims
 PRODUCT_PACKAGES += \
     libshim_atomic \
