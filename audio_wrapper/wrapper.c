@@ -760,7 +760,7 @@ static int wrapper_open(__attribute__((unused)) const hw_module_t* module,
         return -ENODEV;
     }
 
-    dso_handle = dlopen("/system/lib/hw/audio.primary.vendor.universal5420.so", RTLD_NOW);
+    dso_handle = dlopen("/system/vendor/lib/hw/audio.primary.vendor.universal5420.so", RTLD_NOW);
     if (dso_handle == NULL) {
         char const *err_str = dlerror();
         ALOGE("wrapper_open: %s", err_str ? err_str : "unknown");
