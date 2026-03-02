@@ -56,5 +56,5 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
 
-# Inherit from exynos5420-common
-include device/samsung/exynos5420-common/BoardConfigCommon.mk
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk

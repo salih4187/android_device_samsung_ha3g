@@ -95,5 +95,5 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)
 
 # Import the common tree changes
-include device/samsung/exynos5420-common/exynos5420.mk
+include device/samsung/universal5420-common/device-common.mk
 
