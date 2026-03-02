@@ -14,30 +14,10 @@
 # limitations under the License.
 #
 
+# Inherit from universal5420-common
+include device/samsung/universal5420-common/BoardConfigCommon.mk
+
 LOCAL_PATH := device/samsung/ha3g
-
-# Radio
-BOARD_PROVIDES_LIBRIL := true
-# hardware/samsung/ril
-BOARD_MODEM_TYPE := xmm6360
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-
-# Bootloader
-TARGET_OTA_ASSERT_DEVICE := ha3g
-
-# CEC
-BOARD_USES_CEC := true
-
-# HIDL
-DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
-
-# Kernel
-TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
-
-# NFC
-include $(LOCAL_PATH)/nfc/bcm2079x/board.mk
 
 # Battery
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
@@ -45,8 +25,30 @@ GREEN_LED_PATH := "/sys/class/leds/led_g/brightness"
 BLUE_LED_PATH := "/sys/class/leds/led_b/brightness"
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+
+# Bootloader
+TARGET_OTA_ASSERT_DEVICE := ha3g
+
+# Camera: portrait orientation
+BOARD_CAMERA_FRONT_ROTATION := 270
+BOARD_CAMERA_BACK_ROTATION := 90
+
+# CEC
+BOARD_USES_CEC := true
+
+# HIDL
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
+
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH += $(LOCAL_PATH)/include
+
+# Kernel
+TARGET_KERNEL_CONFIG := lineageos_ha3g_defconfig
+
+# NFC
+include $(LOCAL_PATH)/nfc/bcm2079x/board.mk
 
 # Legacy BLOB Support
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
@@ -67,15 +69,13 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+# Radio
+BOARD_PROVIDES_LIBRIL := true
+# hardware/samsung/ril
+BOARD_MODEM_TYPE := xmm6360
+
 # Shims
 TARGET_LD_SHIM_LIBS += \
     /vendor/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so \
     /vendor/lib/libsec-ril.so|libshim_atomic.so \
     /vendor/lib/libsensorhub.so|libshim_binder.so
-
-# Camera: portrait orientation
-BOARD_CAMERA_FRONT_ROTATION := 270
-BOARD_CAMERA_BACK_ROTATION := 90
-
-# Inherit from universal5420-common
-include device/samsung/universal5420-common/BoardConfigCommon.mk
