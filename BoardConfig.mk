@@ -30,6 +30,9 @@ TARGET_OTA_ASSERT_DEVICE := ha3g
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
 
+# NFC
+include $(LOCAL_PATH)/nfc/bcm2079x/board.mk
+
 # Battery
 RED_LED_PATH := "/sys/class/leds/led_r/brightness"
 GREEN_LED_PATH := "/sys/class/leds/led_g/brightness"
