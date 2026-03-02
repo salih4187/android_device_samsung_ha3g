@@ -30,6 +30,9 @@ TARGET_OTA_ASSERT_DEVICE := ha3g
 # CEC
 BOARD_USES_CEC := true
 
+# HIDL
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/manifest.xml
+
 # Kernel
 TARGET_KERNEL_CONFIG := lineageos_deathly_ha3g_defconfig
 
