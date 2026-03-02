@@ -1,0 +1,18 @@
+on init
+    symlink /dev/block/mmcblk0p13 /dev/mbin0
+    restorecon /dev/mbin0
+    symlink /sys/devices/platform/s5p-ehci/ehci_power /dev/ehci_power
+
+on fs
+    chown radio system /efs
+    chmod 0771 /efs
+
+    chown radio radio /sys/devices/virtual/misc/multipdp/waketime
+    chmod 0660 /sys/devices/virtual/misc/umts_dm0/dm_state
+    chown radio system /sys/devices/virtual/misc/umts_dm0/dm_state
+    chown radio radio /sys/devices/platform/s5p-ehci/ehci_cpu_core
+
+service cpboot-daemon /vendor/bin/cbd -d -txmm626x -bh -mh -p13
+    class main
+    user root
+    group radio cache inet misc audio sdcard_rw log sdcard_r shell
