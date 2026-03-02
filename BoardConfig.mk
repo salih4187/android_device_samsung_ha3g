@@ -45,6 +45,12 @@ BOARD_USES_GSC_VIDEO := true
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# Legacy BLOB Support
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/vendor/bin/hw/rild=27 \
+    /system/vendor/bin/hw/android.hardware.sensors@1.0-service.exynos5420=22 \
+    /system/vendor/bin/hw/android.hardware.audio@2.0-service=22
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 11534336
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 13631488
