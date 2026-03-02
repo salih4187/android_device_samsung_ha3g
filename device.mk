@@ -35,10 +35,6 @@ TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
 # GPS
-PRODUCT_PACKAGES += \
-    libdmitry
-
-# GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/gps.cer:system/etc/gps.cer \
     $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml
@@ -90,6 +86,10 @@ PRODUCT_PACKAGES += \
     libxml2 \
     libprotobuf-cpp-full \
     modemloader
+
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_dmitry_gps
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/ha3g/ha3g-vendor.mk)

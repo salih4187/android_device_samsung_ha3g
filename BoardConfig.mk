@@ -52,6 +52,10 @@ BOARD_CACHEIMAGE_PARTITION_SIZE := 309616640
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+# Shims
+TARGET_LD_SHIM_LIBS += \
+    /system/bin/gpsd|/vendor/lib/libshim_dmitry_gps.so
+
 # Camera: portrait orientation
 BOARD_CAMERA_FRONT_ROTATION := 270
 BOARD_CAMERA_BACK_ROTATION := 90
