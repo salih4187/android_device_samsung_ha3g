@@ -15,4 +15,4 @@
 #
 
 # NFC
-DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/nfc/manifest.xml
+DEVICE_MANIFEST_FILE += $(LOCAL_PATH)/nfc/manifest.xml

@@ -15,4 +15,4 @@
 #
 
 # NFC
-include $(DEVICE_PATH)/nfc/board.mk
+include $(LOCAL_PATH)/nfc/board.mk
