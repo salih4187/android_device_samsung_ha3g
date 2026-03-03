@@ -21,11 +21,16 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
-    device/samsung/ha3g/overlay-lineage/lineage-sdk
+    device/samsung/ha3g/overlay-lineage/lineage-sdk \
+    device/samsung/ha3g/overlay/hardware/samsung/AdvancedDisplay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# AdvancedDisplay (MDNIE)
+PRODUCT_PACKAGES += \
+    AdvancedDisplay
 
 # Audio
 PRODUCT_PACKAGES += \
