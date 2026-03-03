@@ -16,7 +16,12 @@
 
 LOCAL_PATH := device/samsung/ha3g
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
+
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    device/samsung/ha3g/overlay-lineage/lineage-sdk
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
