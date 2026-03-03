@@ -24,7 +24,8 @@ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     device/samsung/ha3g/overlay-lineage/lineage-sdk
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Audio
 PRODUCT_PACKAGES += \
