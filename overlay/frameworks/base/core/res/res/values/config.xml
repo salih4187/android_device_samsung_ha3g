@@ -25,7 +25,7 @@
 
 	<!-- Default value for led color when battery is medium charged -->
     <!-- The green LED is brighter than red, bias closer to yellow. -->
-    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFF00</integer>
+    <integer name="config_notificationsBatteryMediumARGB">0xFFFF2E00</integer>
 
 	<!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
