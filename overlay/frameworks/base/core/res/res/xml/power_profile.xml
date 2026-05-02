@@ -40,6 +40,9 @@
         <value>350000</value>
         <value>300000</value>
         <value>250000</value>
+        <value>200000</value>
+        <value>150000</value>
+        <value>100000</value>
     </array>
     <item name="cpu.suspend">3.17</item>
     <item name="cpu.idle">20.3</item>
