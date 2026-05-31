@@ -1,5 +1,5 @@
 # Radio daemon for SIM 1
-service ril-daemon /vendor/bin/hw/rild
+service vendor.ril-daemon /vendor/bin/hw/rild
     class main
     socket sap_uim_socket1 stream 660 bluetooth bluetooth
     user radio
@@ -8,6 +8,6 @@ service ril-daemon /vendor/bin/hw/rild
     onrestart restart cpboot-daemon
 
 on property:persist.sys.cpboot=disable
-    stop ril-daemon
+    stop vendor.ril-daemon
     stop cpboot-daemon
 
